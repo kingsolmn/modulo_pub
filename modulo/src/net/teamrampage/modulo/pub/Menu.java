@@ -5,7 +5,7 @@ package net.teamrampage.modulo.pub;
  * @author Steve Palacios
  *
  */
-public abstract class Menu {
+abstract class Menu {
 	
 	/**
 	 * The position of this menu in a parent menu, zero if it is the top menu.

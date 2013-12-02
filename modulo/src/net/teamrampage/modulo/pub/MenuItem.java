@@ -5,31 +5,67 @@ package net.teamrampage.modulo.pub;
  * @author Steve Palacios
  *
  */
-public abstract class MenuItem {
+abstract class MenuItem {
 	
 	/**
 	 * The position of the menu item in the menu.
 	 */
-	private int index;
+	private int index = 0;
+	
+	/**
+	 * The displayed text of the menu item.
+	 */
+	private String label = "Menu Item";
 	
 	/**
 	 * The type of menu item.
 	 */
-	private MenuItemType type;
+	private MenuItemType type = MenuItemType.MENUITEM;
 	
-	public MenuItem(){
-		index = 0;
-		setType(MenuItemType.MENUITEM);
+	/**
+	 * Default Constructor.
+	 * Creates a menu item with a position index of <code>0</code>, label of "Menu Item", and a type of <code>MENUITEM</code>.
+	 */
+	public MenuItem(){}
+	
+	/**
+	 * Creates a MenuItem at the specified position index with a default label of "Menu Item" and a default type of <code>MENUITEM</code>.
+	 * @param _position The menu item's position.
+	 */
+	public MenuItem(int _position){
+		setItemIndex(_position);
 	}
 	
-	public MenuItem(int _index){
-		setItemIndex(_index);
-		setType(MenuItemType.MENUITEM);
+	/**
+	 * Creates a MenuItem at the specified position index with the specified label and a default type of <code>MENUITEM</code>.
+	 * @param _position The item's position.
+	 * @param _label The item's label.
+	 */
+	public MenuItem(int _position, String _label){
+		setItemIndex(_position);
+		setLabel(_label);
 	}
 	
-	public MenuItem(int _index, MenuItemType _type){
-		index = _index;
+	/**
+	 * Creates a MenuItem at the specified position of the specified type with the default label of "Menu Item".
+	 * @param _position The item's position.
+	 * @param _type The item's type.
+	 */
+	public MenuItem(int _position, MenuItemType _type){
+		setItemIndex(_position);
 		setType(_type);
+	}
+	
+	/**
+	 * Creates a MenuItem at the specified position of the type specified and with the specified label.
+	 * @param _position The position index of the menu item.
+	 * @param _type The type of the menu item.
+	 * @param _label The label of the menu item.
+	 */
+	public MenuItem(int _position, MenuItemType _type, String _label){
+		setItemIndex(_position);
+		setType(_type);
+		setLabel(_label);
 	}
 	
 	/**
@@ -44,7 +80,7 @@ public abstract class MenuItem {
 	 * Sets the position of this menu item in the parent menu.
 	 * @param _index
 	 */
-	public void setItemIndex(int _index){
+	private void setItemIndex(int _index){
 		index = _index;
 	}
 
@@ -58,7 +94,21 @@ public abstract class MenuItem {
 	/**
 	 * @param _type the type of the menu item.
 	 */
-	public void setType(MenuItemType _type) {
+	private void setType(MenuItemType _type) {
 		this.type = _type;
+	}
+
+	/**
+	 * @return the label
+	 */
+	public String getLabel() {
+		return label;
+	}
+
+	/**
+	 * @param label the label to set
+	 */
+	public void setLabel(String label) {
+		this.label = label;
 	}
 }
